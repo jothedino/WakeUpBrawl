@@ -49,7 +49,6 @@ public class PlayerController3PF : MonoBehaviour
             }
         }
 
-        // TODO : Rotate when moving
         transform.Rotate(new Vector3(0, deltaX * rotSpeed * Time.deltaTime, 0));
         movement.y = ySpeed;                              
         movement *= Time.deltaTime;
