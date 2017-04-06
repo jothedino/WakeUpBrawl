@@ -184,7 +184,7 @@ public class BS_Main_Health : MonoBehaviour {
 
 		if (_health <= 0) //DEATH
 		{
-
+			UpdateHealth ();
 
 			if( _SpawnOnDeath != null)
 			{
