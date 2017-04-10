@@ -7,7 +7,6 @@ public class weaponAnimController : MonoBehaviour
 
     public string attackButton;
     new  Animator animation;
-  //  public bool animation_bool;
 
     private void Start()
     {
@@ -17,20 +16,12 @@ public class weaponAnimController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonUp(attackButton))
+        if (Input.GetButtonDown(attackButton))
         {
-         //   animation_bool = true;
-            //animation.Play("testAttack");
+            Debug.Log("ATTACK!!");
             animation.SetTrigger("Attack");
 
-            //animation.SetBool();
         }
-
-       // if (animation_bool == true)
-      //  {
-          //  animation.Play("testAttack");
-          //  animation_bool = false;
-      //  }
         
     }
 }
