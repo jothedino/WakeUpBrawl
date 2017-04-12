@@ -43,7 +43,7 @@ public class DodgeFunction : MonoBehaviour {
 
         //.velocity += Vector3.right * dodgeSpeed;
 
-       velocity = Vector3.right * dodgeSpeed;
+       rb.velocity = Vector3.right * dodgeSpeed;
     }
 
 }
