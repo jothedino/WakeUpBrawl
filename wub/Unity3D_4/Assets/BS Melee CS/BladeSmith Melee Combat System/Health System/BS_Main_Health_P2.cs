@@ -3,14 +3,14 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class BS_Main_Health : MonoBehaviour {
+public class BS_Main_Health_P2 : MonoBehaviour {
 
     public Image healthBar;
     private float maxHitpoint = 100;
     new Animator animation;
 
-    public string p1DeathScene;
-  //  public string p2DeathScene;
+   // public string p1DeathScene;
+    public string p2DeathScene;
 
     [Tooltip("How much health should this object have? When it reaches 0, Death functions will be triggered on")]
 	public int  _health;
@@ -138,7 +138,7 @@ public class BS_Main_Health : MonoBehaviour {
 			}
             animation.SetTrigger("Death");
             StartCoroutine(Delay());
-            SceneManager.LoadScene(p1DeathScene);
+            SceneManager.LoadScene(p2DeathScene);
            
         }
 	}

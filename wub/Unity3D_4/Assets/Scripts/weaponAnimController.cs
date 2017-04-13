@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class weaponAnimController : MonoBehaviour
 {
-
+    public string dodgeButton;
     public string attackButton;
     new  Animator animation;
 
@@ -18,11 +18,16 @@ public class weaponAnimController : MonoBehaviour
     {
         if (Input.GetButtonDown(attackButton))
         {
-            Debug.Log("ATTACK!!");
+            //Debug.Log("ATTACK!!");
             animation.SetTrigger("Attack");
 
         }
-        
+        if (Input.GetButtonDown(dodgeButton))
+        {
+            // Debug.Log("DODGED");
+            animation.SetTrigger("Dodge");
+        }
+
     }
 }
     
