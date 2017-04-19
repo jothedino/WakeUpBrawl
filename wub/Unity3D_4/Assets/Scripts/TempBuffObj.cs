@@ -15,9 +15,9 @@ public class TempBuffObj : MonoBehaviour {
         animation = GetComponent<Animator>();
 	}
 
-    void OnCollisionEnter(Collision other)
+    void OnTriggerEnter(Collider other)
     {
-        if(gameObject.tag == p1Tag)
+        if (other.gameObject.tag == p1Tag)
         {
             Debug.Log("Power Up Triggered");
             animation.SetTrigger("PowerUp");

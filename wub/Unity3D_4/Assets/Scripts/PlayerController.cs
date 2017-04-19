@@ -8,15 +8,16 @@ public class PlayerController : MonoBehaviour
     public string horizontalAxis;
     public string verticalAxis;
     public float moveSpeed = 12f;
-   // public float rotationSpeed = 15.0f;
-   // public float gravity = -9.8f;
+    Animator anim;
     private CharacterController cc;
-   // private float ySpeed;
+    // private float ySpeed;
+    private float f;
 
     // Use this for initialization
     void Start()
     {
         cc = GetComponent<CharacterController>();
+        anim= GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -27,33 +28,27 @@ public class PlayerController : MonoBehaviour
         if (NextDir != Vector3.zero)
             transform.rotation = Quaternion.LookRotation(NextDir.normalized);
         cc.Move(NextDir / 8);
+        f = 0;
+        if (Input.GetAxis(verticalAxis) != 0 || Input.GetAxis(horizontalAxis) != 0)
+        {
+            if( Mathf.Abs(Input.GetAxis(verticalAxis)) > .5f || Mathf.Abs(Input.GetAxis(horizontalAxis)) >.5f)
+            {
+                f = 1;
+            }
+            else
+            {
+                f = .5f;
+            }
+            
+        }
+        anim.SetFloat("forward", f);
+      //  anim.SetFloat("turn", t);
 
-        /*base for all below
-        // Movement is based on the current axis position times speed.
-        float deltaX = Input.GetAxisRaw(horizontalAxis); // * moveSpeed;
-        float deltaZ = Input.GetAxisRaw(verticalAxis); // * moveSpeed;
-        
-        //should cause rotation according to direction character is going
-        //snaps roation back to zero
-        Vector3 movementRotation = new Vector3(deltaX, 0f, deltaZ);
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movementRotation.normalized), 0.15F);
+     //   float f = Input.GetAxis(horizontalAxis);
+        //  float t = Input.GetAxis(verticalAxis);
 
-        transform.Translate(movementRotation * moveSpeed * Time.deltaTime, Space.World);
-        */
-        /*
-       //back to base player movement
-       Vector3 movement = new Vector3(deltaX, 0, deltaZ);
-       movement = Vector3.ClampMagnitude(movement, moveSpeed);
 
-       Quaternion tmp = target.rotation;
-       target.eulerAngles = new Vector3(0, target.eulerAngles.y, 0);
-       transform.rotation = Quaternion.Lerp(transform.rotation, target.rotation, rotationSpeed * Time.deltaTime);
-       movement.y = ySpeed;                               
-       movement *= Time.deltaTime;
-       movement = target.TransformDirection(movement);
-       target.rotation = tmp;
-       cc.Move(movement);
-        */
+
 
     }
 }
