@@ -6,7 +6,7 @@ public class weaponAnimController : MonoBehaviour
 {
     public string dodgeButton;
     public string attackButton;
-    public string p1Tag;
+   public string p1Tag;
     public string p2Tag;
     new  Animator animation;
     public int damage = 1;
@@ -33,20 +33,7 @@ public class weaponAnimController : MonoBehaviour
         }
 
     }
-    /*
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == p2Tag)
-        {
-            Debug.Log("Attack Triggered");
-
-       
-
-        }
-        */
-
-
-    }
+}
 
     
     
