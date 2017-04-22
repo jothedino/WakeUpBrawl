@@ -9,8 +9,7 @@ public class BS_Main_Health_P2 : MonoBehaviour {
     private float maxHitpoint = 100;
     new Animator animation;
 
-   // public string p1DeathScene;
-    public string p2DeathScene;
+    public string WinningPlayer;
 
     [Tooltip("How much health should this object have? When it reaches 0, Death functions will be triggered on")]
 	public int  _health;
@@ -77,8 +76,9 @@ public class BS_Main_Health_P2 : MonoBehaviour {
 	public void ApplyDamage(int _dmg)   //Let's apply some damage on hit, shall we?
 	{
 		_health -= _dmg;
+       
 
-		if (_health< 0) 
+        if (_health< 0) 
 		{
 			_health = 0;
 		}
@@ -111,8 +111,9 @@ public class BS_Main_Health_P2 : MonoBehaviour {
 		if (_health <= 0) //DEATH
 		{
 			UpdateHealth ();
+            animation.SetTrigger("Death");
 
-			if( _SpawnOnDeath != null)
+            if ( _SpawnOnDeath != null)
 			{
 				Instantiate( _SpawnOnDeath, transform.position, transform.rotation);
 			}
@@ -136,17 +137,17 @@ public class BS_Main_Health_P2 : MonoBehaviour {
 
 				}
 			}
-            animation.SetTrigger("Death");
-            StartCoroutine(Delay());
-            SceneManager.LoadScene(p2DeathScene);
+            
+            StartCoroutine(Delay(3f));
+            //SceneManager.LoadScene(WinningPlayer);
            
         }
 	}
 
-    IEnumerator Delay()
+    IEnumerator Delay(float waitTime)
     {
 
-        yield return new WaitForSeconds(2f);
-
+        yield return new WaitForSeconds(waitTime);
+        SceneManager.LoadScene(WinningPlayer);
     }
 }
