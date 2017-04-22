@@ -26,7 +26,7 @@ public class TempBuffObj : MonoBehaviour {
             healthScript = other.gameObject.GetComponent<BS_Main_Health>();
             StartCoroutine(StopDamage());
 
-            GetComponent<CapsuleCollider>().enabled = false;
+        //    GetComponent<CapsuleCollider>().enabled = false;
 
         }
 
