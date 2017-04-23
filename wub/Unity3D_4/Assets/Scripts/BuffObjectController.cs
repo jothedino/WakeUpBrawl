@@ -4,33 +4,44 @@ using UnityEngine;
 
 public class BuffObjectController : MonoBehaviour
 {
+    // Make sure that this GameObject has a Kinematic Rigidbody on it. Otherwise, the collision with the child won't work
 
-    //Spawn this object
-    public GameObject spawnObject;
+    // GameObject that belongs to this GameObject. Has Mesh + Collider
+    private GameObject buffChild;
 
-    void SpawnObject()
+    private void Start()
     {
-            Vector3 position = new Vector3(Random.Range(-5.0F, 5.0F), 1, Random.Range(-5F, 5F));
-            Instantiate(spawnObject, position, Quaternion.identity);
-        
+        buffChild = transform.GetChild(0).gameObject;
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player 1" || other.gameObject.tag == "Player 2")
         {
-            StartCoroutine(SpawnDelay());
-            //Destroy(gameObject);
-         //   SpawnObject();
-          
+            StartCoroutine(DisableAndMove());
         }
     }
-    IEnumerator SpawnDelay()
+
+    IEnumerator DisableAndMove()
     {
-        yield return new WaitForSeconds(3f);
-        SpawnObject();
+        // Disable the child gameobject
+        buffChild.SetActive(false);
+        //yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(Random.Range(4, 13));
+
+        // Move, don't re-instantiate
+        MoveObject();
     }
 
+    void MoveObject()
+    {
+        // Choose random position
+        Vector3 position = new Vector3(Random.Range(-5.0F, 5.0F), transform.position.y, Random.Range(-5F, 5F));
+        // Apply the movement
+        transform.position = position;
+        // Re-enable the child object
+        buffChild.SetActive(true);
+    }
 }
 
 
