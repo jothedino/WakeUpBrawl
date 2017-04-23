@@ -9,7 +9,6 @@ public class weaponAnimController : MonoBehaviour
    public string p1Tag;
     public string p2Tag;
     new  Animator animation;
-    public int damage = 1;
 
     private void Start()
     {

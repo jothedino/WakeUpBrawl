@@ -21,7 +21,7 @@ public class TempBuffObj_P2 : MonoBehaviour {
     {
         if (other.gameObject.tag == playerTag)
         {
-            Debug.Log("P2 Power Up Triggered");
+        //    Debug.Log("P2 Power Up Triggered");
             animation.SetTrigger("PowerUp");
             healthScript = other.gameObject.GetComponent<BS_Main_Health>();
             StartCoroutine(StopDamage());
