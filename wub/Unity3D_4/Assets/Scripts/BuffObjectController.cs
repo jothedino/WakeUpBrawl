@@ -36,7 +36,7 @@ public class BuffObjectController : MonoBehaviour
     void MoveObject()
     {
         // Choose random position
-        Vector3 position = new Vector3(Random.Range(-5.0F, 5.0F), transform.position.y, Random.Range(-5F, 5F));
+        Vector3 position = new Vector3(Random.Range(-3.0F, 9.0F), transform.position.y, Random.Range(-8F, 8F));
         // Apply the movement
         transform.position = position;
         // Re-enable the child object
