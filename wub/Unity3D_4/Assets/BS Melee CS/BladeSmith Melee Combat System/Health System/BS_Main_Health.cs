@@ -138,7 +138,7 @@ public class BS_Main_Health : MonoBehaviour {
 				}
 			}
             
-            StartCoroutine(Delay(3f));
+            StartCoroutine(Delay(1f));
             //SceneManager.LoadScene(WinningPlayer);
            
         }
